@@ -10,7 +10,7 @@ jobs:
           name: Install dependencies
           command: |
             apk add --no-cache py3-pip
-            pip install docker-compose==2.27.0
+            pip install docker-compose==1.29.2
       - run:
           name: Run tests
           command: |
