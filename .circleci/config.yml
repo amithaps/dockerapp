@@ -14,7 +14,7 @@ jobs:
             pip install --upgrade setuptools
             pip install "Cython<3.0.0"
             apk add build-base python3-dev libffi-dev
-            pip install docker-compose==1.29.2 --no-build-isolation
+            pip install docker-compose==2.27.0 --no-build-isolation
       - run:
           name: Run tests
           command: |
