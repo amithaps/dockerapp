@@ -5,14 +5,16 @@ jobs:
       - image: docker:20.10.17-git  # Latest stable Docker image with Git pre-installed
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
+          version: 20.10.17  # Matches the Docker version used in the image
       - run:
           name: Install dependencies
           command: |
             apk add --no-cache py3-pip
             pip install --upgrade setuptools
+            pip install "Cython<3.0.0"
             apk add build-base python3-dev libffi-dev
-            pip install docker-compose==1.29.2
+            pip install docker-compose==1.29.2 --no-build-isolation
       - run:
           name: Run tests
           command: |
