@@ -17,6 +17,10 @@ jobs:
             apk add build-base python3-dev libffi-dev
             pip install docker-compose==1.29.2 --no-build-isolation
       - run:
+          name: List Docker images
+          command: |
+            docker images
+      - run:
           name: Run tests
           command: |
             docker-compose up -d
@@ -26,6 +30,6 @@ jobs:
           command: |
             docker login -u $DOCKER_HUB_USER_ID -p $DOCKER_HUB_PWD
             docker tag dockerapp_dockerapp $DOCKER_HUB_USER_ID/dockerapp:$CIRCLE_SHA1
-            # docker tag dockerapp_dockerapp $DOCKER_HUB_USER_ID/dockerapp:latest
+            docker tag dockerapp_dockerapp $DOCKER_HUB_USER_ID/dockerapp:latest
             docker push $DOCKER_HUB_USER_ID/dockerapp:$CIRCLE_SHA1
-            # docker push $DOCKER_HUB_USER_ID/dockerapp:latest
+            docker push $DOCKER_HUB_USER_ID/dockerapp:latest
