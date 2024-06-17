@@ -20,6 +20,7 @@ jobs:
           name: List Docker images
           command: |
             docker images
+            docker compose images
       - run:
           name: Run tests
           command: |
